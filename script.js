@@ -11,7 +11,7 @@ const currentOp = document.querySelector("#current__Op");
 
 // const multiBtn = document.querySelector("#multi__btn");
 // const divideBtn = document.querySelector("#divide__btn");
-// const addBtn = document.querySelector("#add__btn");
+const addBtn = document.querySelector("#add__btn");
 // const subBtn = document.querySelector("#sub__btn");
 
 // const decimalBtn = document.querySelector("#decimal__btn");
@@ -32,7 +32,8 @@ let sum = [];
 // 3. Have initial array (Current operand)
 
 // 4. Have baseline sum set to a blank array for all clear and answers (do I need 
-// blank sum if I just push innerHTML to output?)
+// blank sum if I just push innerHTML to output?(sum needed because I can't have 2 arrays that
+// are const but also editable?))
 
 // 5. On num button click add innerHTML to initial array in order of incidence
 
@@ -113,22 +114,41 @@ let sum = [];
 //     })
 // })
 
-// WORKS
 
+// ADD DIGIT PRESSED TO DISPLAY!
 numBtn.forEach(numBtn => {
     numBtn.addEventListener("click", () => {
         numbers.forEach(element => {
             if (element == numBtn.dataset.number) {
             currentOp.innerHTML += element;
-            console.log(currentOp.innerHTML);
+            // console.log(currentOp.innerHTML);
             }
             // console.log(numBtn.innerHTML);
         });
     });
 });
 
+// ALL CLEAR BUTTON!
 acBtn.addEventListener("click", () => {
     currentOp.innerHTML = "";
     prevOp.innerHTML = "";
     output.innerHTML = "";
+})
+
+// DEL BUTTON!
+delBtn.addEventListener("click", () => {
+    currentOp.innerHTML = "";
+})
+
+// ADD BUTTON?
+addBtn.addEventListener("click", () => {
+    prevOp.innerHTML = `${currentOp}+`;
+    currentOp.innerHTML = ""
+})
+
+// EQUALS BUTTON?
+eqBtn.addEventListener("click", () => {
+    output.innerHTML = `${currentOp}+${prevOp}`
+    currentOp.innerHTML = ""
+    prevOp.innerHTML = ""
 })
