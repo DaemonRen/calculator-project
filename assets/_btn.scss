@@ -1,0 +1,34 @@
+.calc__grid > button {
+    outline: none;
+    border: 2px black solid;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#del__btn {
+    background-color: #DE3C4B;
+}
+
+#eq__btn {
+    background-color: #8e28dd;
+}
+
+#ac__btn {
+    background-color: #feb92d;
+}
+
+.op__btn {
+    background-color: #8f28dd62;
+}
+
+.num__btn {
+    background-color: rgba(128, 128, 128, 0.473);
+}
+
+// .num__btn:hover {
+//     background-color: rgba(179, 179, 179, 0.438);
+// }

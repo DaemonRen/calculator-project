@@ -1,0 +1,30 @@
+
+@import "assets/grid";
+@import "assets/btn";
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.output {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    align-items: flex-end;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.678);
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: white;
+    font-size: 2rem;
+}

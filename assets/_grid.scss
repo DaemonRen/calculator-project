@@ -1,0 +1,28 @@
+
+
+
+.calc__grid {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    max-width: 65vw;
+    margin: auto;
+    border: black solid 5px;
+    grid-template-columns: repeat(4 , 15vw);
+    grid-template-rows: repeat(8 , 10vh);
+    gap: 3px;
+    padding: 50px;
+    background-color: rgb(189, 189, 189);
+    .calc__btn {
+        grid-row: span 2;
+    }
+
+    #ac__btn {
+        grid-column: span 2;
+    }
+
+    .output {
+        grid-column: 1 / -1;
+        grid-row: span 2;
+    }
+}
