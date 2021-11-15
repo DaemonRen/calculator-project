@@ -1,28 +1,3 @@
-
-
-
-
-// Define my constants
-const numBtn = document.querySelectorAll(".num__btn");
-// const opBtn = document.querySelectorAll(".op__btn");
-const output = document.querySelectorAll(".output");
-const prevOp = document.querySelectorAll(".prev__Op");
-const currentOp = document.querySelector("#current__Op");
-
-// const multiBtn = document.querySelector("#multi__btn");
-// const divideBtn = document.querySelector("#divide__btn");
-const addBtn = document.querySelector("#add__btn");
-// const subBtn = document.querySelector("#sub__btn");
-
-// const decimalBtn = document.querySelector("#decimal__btn");
-const acBtn = document.querySelector("#ac__btn");
-const delBtn = document.querySelector("#del__btn");
-const eqBtn = document.querySelector("#eq__btn");
-
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "."];
-let sum = [];
-
-
 // 1. Have each num button attached to an event listener
 
 // 2. Have pre-determined array of numbers
@@ -41,78 +16,30 @@ let sum = [];
 // then passes initial array to second array (previous operand)
 
 // 7. Equals button that when pressed converts initial array to string 
-// and uses operation between the initial and second arrays, passing answer to output array
+// and uses operation between the initial and second arrays, passing answer to second array
 
-// numBtn.forEach(button =>{
-//     button.addEventListener("click" , () => {
-//         Calculator.inputNumber(button.textContent)
-//         Calculator.updateOutput()
-//     })
-// })
+// // if last button operator
 
-// class Calculator {
-//     constructor (currentOp, prevOp){
-//         this.prevOp = prevOp
-//         this.currentOp = currentOp
-//     }
 
-//     clear() {
-//         this.currentOp = ""
-//         this.prevOp = ""
-//         this.operation = undefined
-    
-//     }
-    
-//     delete() {
-    
-//     }
-    
-//     inputNumber(number) {
-//         this.currentOp = number
-//     }
-    
-//     inputOperation(operation) {
-    
-//     }
-    
-//     compute() {
-    
-//     }
-    
-//     updateOutput () {
-//         this.currentOp.innerText = this.currentOp
-//     }
-// }
+const numBtn = document.querySelectorAll(".num__btn");
+const acBtn = document.querySelector("#ac__btn");
+const delBtn = document.querySelector("#del__btn");
+const eqBtn = document.querySelector("#eq__btn");
 
-// numBtn.forEach(btn =>{
-//     btn.addEventListener("click" , () => {
-//         console.log(btn.innerHTML)
-//     })
-// })
+const opBtn = document.querySelectorAll(".op__btn");
+const output = document.querySelectorAll(".output");
+const prevOp = document.querySelector("#prev__Op");
+const currentOp = document.querySelector("#current__Op");
+  
+// const addBtn = document.querySelector("#add__btn").addEventListener("click" , clickOp);
 
-// opBtn.forEach(button =>{
-//     button.addEventListener("click" , () => {
-//         console.log(button)
-//     })
-// })
 
-// acBtn.forEach(button =>{
-//     button.addEventListener("click" , () => {
-//         console.log(button)
-//     })
-// })
 
-// delBtn.forEach(button =>{
-//     button.addEventListener("click" , () => {
-//         console.log(button)
-//     })
-// })
-
-// eqBtn.forEach(button =>{
-//     button.addEventListener("click" , () => {
-//         console.log(button)
-//     })
-// })
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "."];
+const operators = ["+", "-", "/", "*"]
+// let currentLine = currentOp;
+let opUsed = "";
+let sum = "";
 
 
 // ADD DIGIT PRESSED TO DISPLAY!
@@ -128,27 +55,76 @@ numBtn.forEach(numBtn => {
     });
 });
 
+// ADD OPERATOR PRESSED TO DISPLAY!
+opBtn.forEach(opBtn => {
+  opBtn.addEventListener("click", () => {
+      operators.forEach(element => {
+          if (element == opBtn.dataset.operation) {
+          prevOp.innerHTML = currentOp.innerHTML += element;
+          currentOp.innerHTML = "";
+          sum = prevOp.innerHTML;
+          // console.log(currentOp.innerHTML);
+          if (operators == "+") {
+            opUsed == "+";
+            }
+          }
+          // console.log(opBtn.innerHTML);
+      });
+  });
+});
+
 // ALL CLEAR BUTTON!
 acBtn.addEventListener("click", () => {
     currentOp.innerHTML = "";
     prevOp.innerHTML = "";
     output.innerHTML = "";
-})
+});
 
-// DEL BUTTON!
-delBtn.addEventListener("click", () => {
-    currentOp.innerHTML = "";
-})
+let recentAns =""
+// switch (opUsed) {
+//     case "+":
+//       opUsed = "+"
+//       answer = parseFloat(prevOp.innerHTML) + parseFloat(currentOp.innerHTML);
+//     case "-":
+//       opUsed = "-"
+//       answer = parseFloat(sum[0]) - parseFloat(sum[1]);
+//     case "*":
+//       opUsed = "*"
+//       answer = parseFloat(sum[0]) * parseFloat(sum[1]);
+//     case "/":
+//       opUsed = "/"
+//       answer = parseFloat(sum[0]) / parseFloat(sum[1]);
+//     default:
+//       answer = prevOp;
+// }
 
-// ADD BUTTON?
-addBtn.addEventListener("click", () => {
-    prevOp.innerHTML = `${currentOp}+`;
-    currentOp.innerHTML = ""
-})
+// eqBtn.addEventListener("click", () => {
+//   if (opUsed == "+") {
+//     prevOp.innerHTML = answer;
+//     answer = parseFloat(prevOp.innerHTML) + parseFloat(currentOp.innerHTML);
+//     console.log(prevOp.innerHTML);
+//   }
+//   console.log(eqBtn);
+// })
 
-// EQUALS BUTTON?
-eqBtn.addEventListener("click", () => {
-    output.innerHTML = `${currentOp}+${prevOp}`
-    currentOp.innerHTML = ""
-    prevOp.innerHTML = ""
-})
+eqBtn.addEventListener("click", () => calcAns())
+
+
+calcAns = () => {
+  if (prevOp.innerHTML.includes("+")) {
+    prevOp.innerHTML = recentAns;
+    recentAns = parseFloat(prevOp.innerHTML) + parseFloat(currentOp.innerHTML);
+    console.log(prevOp.innerHTML);
+  // } else if (prevOp.includes("-")) {
+  //   prevOp.innerHTML = recentAns;
+  //   recentAns = parseFloat(prevOp.innerHTML) - parseFloat(currentOp.innerHTML);
+  //   console.log(prevOp.innerHTML);
+  // } else if (prevOp.includes("*")) {
+  //   prevOp.innerHTML = recentAns;
+  //   recentAns = parseFloat(prevOp.innerHTML) * parseFloat(currentOp.innerHTML);
+  //   console.log(prevOp.innerHTML);
+  // } else if (prevOp.includes("/")) {
+  //   prevOp.innerHTML = recentAns;
+  //   recentAns = parseFloat(prevOp.innerHTML) / parseFloat(currentOp.innerHTML);
+  //   console.log(prevOp.innerHTML);}
+  }}
